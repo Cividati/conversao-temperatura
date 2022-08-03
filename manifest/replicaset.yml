@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: conversao-temperatura
+  labels:
+    app: conversao-temperatura
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: cividati/conversao-temperatura:v1
+          ports:
+            - containerPort: 80
