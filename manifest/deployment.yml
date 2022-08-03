@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversao-temperatura
+  labels:
+    app: conversao-temperatura
+spec: 
+  replicas: 10
+  selector:
+    matchLabels:
+      app: conversao-temperatura
+  template:
+    metadata:
+      labels:
+        app: conversao-temperatura
+    spec:
+      containers:
+        - name: web
+          image: cividati/conversao-temperatura:v1
+          ports:
+            - containerPort: 80
