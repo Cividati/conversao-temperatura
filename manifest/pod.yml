@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: conversao-temperatura
+spec:
+  containers:
+    - name: web
+      image: cividati/conversao-temperatura:v1
+      ports:
+        - containerPort: 80
+
