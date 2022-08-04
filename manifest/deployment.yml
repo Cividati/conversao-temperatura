@@ -1,21 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: conversao-temperatura
+  name: web
   labels:
-    app: conversao-temperatura
+    app: web
 spec: 
   replicas: 10
   selector:
     matchLabels:
-      app: conversao-temperatura
+      app: web
   template:
     metadata:
       labels:
-        app: conversao-temperatura
+        app: web
     spec:
       containers:
         - name: web
-          image: cividati/conversao-temperatura:v1
+          image: fabricioveronez/web-page:blue
           ports:
             - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-web
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 80
+    nodePort: 30000
+  type: NodePort
