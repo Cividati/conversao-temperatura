@@ -41,8 +41,8 @@ jobs:
           kubeconfig: ${{secrets.K8S_CONFIG}}
           context: <context name> # current-context from kubeconfig is used as default
 
-      - uses: Azure/k8s-deploy@v3.1
-        with:
-          images: 'cividati/conversao-temperatura:${{ event.run_id }}'
-          manifests: |
-              manifest/deployment.yml
+      # - uses: Azure/k8s-deploy@v3.1
+      #   with:
+      #     images: 'cividati/conversao-temperatura:${{ event.run_id }}'
+      #     manifests: |
+      #         manifest/deployment.yml
