@@ -7,12 +7,12 @@ terraform {
   }
 }
 provider "digitalocean" {
-  token = ""
+  token = var.do_token #""
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s_iniciativa" {
-  name   = "k8s-iniciativa"
-  region = "nyc1"
+  name   = var.k8s_name 
+  region = var.k8s_region 
   # Grab the latest version slug from `doctl kubernetes options versions`
   version = "1.22.8-do.1"
 
@@ -29,3 +29,7 @@ resource "digitalocean_kubernetes_node_pool" "node_premium" {
   size       = "s-4vcpu-8gb"
   node_count = 2
 }
+
+variable "do_token" {}
+variable "k8s_name" {}
+variable "k8s_region" {}
