@@ -33,3 +33,8 @@ resource "digitalocean_kubernetes_node_pool" "node_premium" {
 variable "do_token" {}
 variable "k8s_name" {}
 variable "k8s_region" {}
+
+output "kube_config" {
+  value = digitalocean_kubernetes_cluster.k8s_iniciativa.kube_config.0.raw_config
+}
+  
